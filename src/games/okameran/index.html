@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>オカメラン｜ペコせんぱいのミニゲーセン</title>
+<meta name="description" content="スマホで遊べる無料アクションゲーム「オカメラン」。おでかけしたオカメインコをジャンプでおうちまで導こう！ひらがなUIでこどもにも安心。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="オカメラン｜ペコせんぱいのミニゲーセン">
+<meta property="og:description" content="ジャンプでオカメインコをおうちまで！スマホで遊べる無料アクションゲーム。">
+<meta property="og:image" content="https://akashiriot.github.io/peko-games/games/okameran/img/okame_clear.png">
+<meta property="og:url" content="https://akashiriot.github.io/peko-games/games/okameran/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ペコせんぱいのミニゲーセン">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="オカメラン｜ペコせんぱいのミニゲーセン">
+<meta name="twitter:description" content="ジャンプでオカメインコをおうちまで！スマホで遊べる無料アクションゲーム。">
+<meta name="twitter:image" content="https://akashiriot.github.io/peko-games/games/okameran/img/okame_clear.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P72GZWJ98N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P72GZWJ98N');
+</script>
+</head>
+<body>
+<div id="app">
+
+  <!-- タイトル画面 -->
+  <section id="screen-title" class="screen active">
+    <div class="title-art">
+      <img class="okame-icon" src="img/okame_title.png" alt="" aria-hidden="true">
+    </div>
+    <h1 class="title">
+      <span class="title-heart left">♥</span>
+      <span class="title-text">オカメラン</span>
+      <span class="title-heart right">♥</span>
+    </h1>
+    <div class="menu">
+      <h2 class="menu-heading">あそびかた</h2>
+      <p class="howto">
+        <span class="howto-line">オカメインコがはしりだすよ！</span>
+        <span class="howto-line">ジャンプしてすすんでね。</span>
+      </p>
+
+      <h2 class="menu-heading">難易度  Lv<span id="level-display">2</span></h2>
+      <input type="range" id="level-slider" class="level-slider"
+             min="1" max="3" step="1" value="2">
+      <p class="hint" id="level-hint">ふつう</p>
+
+      <button id="btn-start" class="btn btn-primary">スタート</button>
+
+      <label class="sound-toggle">
+        <input type="checkbox" id="sound-toggle" checked>
+        <span class="sound-toggle-label">効果音</span>
+      </label>
+    </div>
+
+    <a href="../../" class="btn home-link">トップへもどる</a>
+
+    <footer class="page-footer">
+      <p class="copyright">© 2026 ペコ先輩</p>
+    </footer>
+  </section>
+
+  <!-- ゲーム画面 -->
+  <section id="screen-game" class="screen">
+    <header class="game-header">
+      <div class="player-info">
+        <span class="info-label">SCORE</span>
+        <span class="info-value" id="score-value">0</span>
+      </div>
+      <div class="player-info">
+        <span class="info-label">LIFE</span>
+        <span class="info-value" id="lives-value">3</span>
+      </div>
+      <div class="player-info">
+        <span class="info-label">TIME</span>
+        <span class="info-value" id="time-value">200</span>
+      </div>
+    </header>
+
+    <div class="board-wrap">
+      <canvas id="board" class="board" width="480" height="288"></canvas>
+      <div id="message" class="message"></div>
+    </div>
+
+    <div class="control-row">
+      <button id="btn-jump" class="ctrl-btn ctrl-jump">ジャンプ ↑</button>
+      <button id="btn-fire" class="ctrl-btn ctrl-fire disabled" type="button" aria-hidden="true">むてき</button>
+    </div>
+
+    <footer class="game-footer">
+      <button id="btn-reset" class="btn">リセット</button>
+      <button id="btn-back" class="btn">タイトルへ</button>
+    </footer>
+  </section>
+
+  <!-- 結果画面 -->
+  <section id="screen-result" class="screen">
+    <div class="result-deco">✿</div>
+    <h2 class="result-title" id="result-title">ゲームオーバー</h2>
+    <img id="result-image" class="result-image" src="img/okame_clear.png" alt="" aria-hidden="true" hidden>
+    <div class="result-counts">
+      <div class="result-side">
+        <span class="result-label">SCORE</span>
+        <span class="result-num" id="result-score">0</span>
+      </div>
+      <div class="result-side">
+        <span class="result-label">HIGH</span>
+        <span class="result-num" id="result-high">0</span>
+      </div>
+    </div>
+    <div class="result-buttons">
+      <button id="btn-replay" class="btn btn-primary">もう一度</button>
+      <button id="btn-result-back" class="btn">タイトルへ</button>
+    </div>
+  </section>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

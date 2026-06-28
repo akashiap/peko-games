@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>ピンボール｜ペコせんぱいのミニゲーセン</title>
+<meta name="description" content="スマホで遊べる無料ピンボール。タップ操作のフリッパーでハイスコアを目指そう！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ピンボール｜ペコせんぱいのミニゲーセン">
+<meta property="og:description" content="スマホで遊べる無料ピンボール。フリッパー操作でハイスコアを狙おう！">
+<meta property="og:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<meta property="og:url" content="https://akashiriot.github.io/peko-games/games/pinball/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ペコせんぱいのミニゲーセン">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ピンボール｜ペコせんぱいのミニゲーセン">
+<meta name="twitter:description" content="スマホで遊べる無料ピンボール。フリッパー操作でハイスコアを狙おう！">
+<meta name="twitter:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P72GZWJ98N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P72GZWJ98N');
+</script>
+</head>
+<body>
+<div id="app">
+
+  <!-- タイトル画面 -->
+  <section id="screen-title" class="screen active">
+    <div class="title-art">
+      <svg class="pinball-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="p-machine" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3a4f8a"/>
+            <stop offset="100%" stop-color="#1f2e5c"/>
+          </linearGradient>
+          <radialGradient id="p-ball" cx="0.35" cy="0.3" r="0.9">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="55%" stop-color="#d8d2c4"/>
+            <stop offset="100%" stop-color="#7e7568"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="100" cy="186" rx="52" ry="6" fill="rgba(0,0,0,0.22)"/>
+        <path d="M42 30 Q42 22 50 22 L150 22 Q158 22 158 30 L158 170 Q158 180 148 180 L52 180 Q42 180 42 170 Z"
+              fill="url(#p-machine)" stroke="#162144" stroke-width="2"/>
+        <path d="M52 30 Q52 26 56 26 L144 26 Q148 26 148 30 L148 70 Q100 88 52 70 Z"
+              fill="rgba(255,255,255,0.12)"/>
+        <circle cx="74" cy="78" r="10" fill="#ffd166" stroke="#caa238" stroke-width="2"/>
+        <circle cx="126" cy="78" r="10" fill="#ff6b8a" stroke="#c44363" stroke-width="2"/>
+        <circle cx="100" cy="108" r="10" fill="#7ad6c4" stroke="#3aa896" stroke-width="2"/>
+        <path d="M62 150 L92 162 L62 158 Z" fill="#ffd166" stroke="#caa238" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M138 150 L108 162 L138 158 Z" fill="#ffd166" stroke="#caa238" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="118" cy="138" r="9" fill="url(#p-ball)" stroke="#5a5448" stroke-width="1.2"/>
+        <circle cx="115" cy="135" r="2.4" fill="rgba(255,255,255,0.85)"/>
+        <circle cx="56" cy="50" r="2.5" fill="#ffd166" opacity="0.9"/>
+        <circle cx="100" cy="44" r="2.5" fill="#ff6b8a" opacity="0.9"/>
+        <circle cx="144" cy="50" r="2.5" fill="#7ad6c4" opacity="0.9"/>
+      </svg>
+    </div>
+    <h1 class="title">
+      <span class="title-heart left">♥</span>
+      <span class="title-text">ピンボール</span>
+      <span class="title-heart right">♥</span>
+    </h1>
+    <div class="menu">
+      <h2 class="menu-heading">あそびかた</h2>
+      <p class="howto">
+        <span class="howto-line">画面下の <b>ボタン</b> でフリッパー操作</span>
+        <span class="howto-line">キーボード: <b>← →</b> または <b>A / D</b></span>
+        <span class="howto-line">スペースキーでボール発射</span>
+      </p>
+
+      <h2 class="menu-heading">難易度  Lv<span id="level-display">3</span></h2>
+      <input type="range" id="level-slider" class="level-slider"
+             min="1" max="5" step="1" value="3">
+      <p class="hint" id="level-hint">ふつう</p>
+
+      <button id="btn-start" class="btn btn-primary">スタート</button>
+
+      <label class="sound-toggle">
+        <input type="checkbox" id="sound-toggle" checked>
+        <span class="sound-toggle-label">効果音</span>
+      </label>
+    </div>
+
+    <a href="../../" class="btn home-link">トップへもどる</a>
+
+    <footer class="page-footer">
+      <p class="copyright">© 2026 ペコ先輩</p>
+    </footer>
+  </section>
+
+  <!-- ゲーム画面 -->
+  <section id="screen-game" class="screen">
+    <header class="game-header">
+      <div class="player-info">
+        <span class="info-label">SCORE</span>
+        <span class="info-value" id="score-value">0</span>
+      </div>
+      <div class="player-info">
+        <span class="info-label">BALL</span>
+        <span class="info-value" id="balls-value">3</span>
+      </div>
+    </header>
+
+    <div class="board-wrap">
+      <canvas id="board" class="board" width="360" height="540"></canvas>
+      <div id="message" class="message"></div>
+    </div>
+
+    <div class="flipper-controls">
+      <button id="btn-flip-left" class="flip-btn">◀ 左</button>
+      <button id="btn-launch" class="flip-btn launch">↑ 発射</button>
+      <button id="btn-flip-right" class="flip-btn">右 ▶</button>
+    </div>
+
+    <footer class="game-footer">
+      <button id="btn-reset" class="btn">リセット</button>
+      <button id="btn-back" class="btn">タイトルへ</button>
+    </footer>
+  </section>
+
+  <!-- 結果画面 -->
+  <section id="screen-result" class="screen">
+    <div class="result-deco">✿</div>
+    <h2 class="result-title" id="result-title">ゲームオーバー</h2>
+    <div class="result-counts">
+      <div class="result-side">
+        <span class="result-label">SCORE</span>
+        <span class="result-num" id="result-score">0</span>
+      </div>
+      <div class="result-side">
+        <span class="result-label">HIGH</span>
+        <span class="result-num" id="result-high">0</span>
+      </div>
+    </div>
+    <div class="result-buttons">
+      <button id="btn-replay" class="btn btn-primary">もう一度</button>
+      <button id="btn-result-back" class="btn">タイトルへ</button>
+    </div>
+  </section>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

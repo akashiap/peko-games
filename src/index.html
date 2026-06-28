@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#fff4e0">
+<meta name="color-scheme" content="light">
+<title>ペコせんぱいのミニゲーセン｜こどもと親子で遊べる無料ミニゲーム集</title>
+<meta name="description" content="スマホですぐ遊べる、ひらがな対応の無料ミニゲーム集。リバーシ・五目ならべ・しんけいすいじゃく・ポーカー・すごろく・ピンボール・スロット・ルーレット・オカメランなど親子・家族で楽しめます。">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ペコせんぱいのミニゲーセン">
+<meta property="og:description" content="スマホでさくっと遊べる、ひらがな対応のこども向け無料ミニゲーム集。親子や家族で楽しもう！">
+<meta property="og:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<meta property="og:url" content="https://akashiriot.github.io/peko-games/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ペコせんぱいのミニゲーセン">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ペコせんぱいのミニゲーセン">
+<meta name="twitter:description" content="スマホでさくっと遊べる、ひらがな対応のこども向け無料ミニゲーム集。親子や家族で楽しもう！">
+<meta name="twitter:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon/icon-512.png">
+<link rel="apple-touch-icon" href="icon/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ペコせんぱいのミニゲーセン">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P72GZWJ98N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P72GZWJ98N');
+</script>
+</head>
+<body>
+<div id="app">
+
+  <img class="page-bg-top" src="img/bg_01.png" alt="" aria-hidden="true">
+
+  <header class="hero">
+    <div class="hero-deco" aria-hidden="true">
+      <span class="sparkle s1">✦</span>
+      <span class="sparkle s2">✿</span>
+      <span class="sparkle s3">✧</span>
+      <span class="sparkle s4">❀</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="hero-text">
+        <span class="hero-text-small">ペコせんぱいの</span>
+        <span class="hero-text-main">
+          <span class="hero-heart">♥</span>
+          ミニゲーセン
+          <span class="hero-heart">♥</span>
+        </span>
+      </span>
+    </h1>
+    <p class="hero-sub">スマホでさくっとあそべるゲームをつくったよ</p>
+  </header>
+
+  <main class="game-list" role="list">
+
+    <!-- リバーシ -->
+    <a class="game-card card-reversi" role="listitem" href="games/reversi/index.html">
+      <div class="card-art">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="r-felt" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3fb06a"/>
+              <stop offset="100%" stop-color="#1f7a3e"/>
+            </linearGradient>
+            <radialGradient id="r-stone-w" cx="0.35" cy="0.3" r="0.9">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#d8d0bc"/>
+            </radialGradient>
+            <radialGradient id="r-stone-b" cx="0.35" cy="0.3" r="0.9">
+              <stop offset="0%" stop-color="#5c5648"/>
+              <stop offset="100%" stop-color="#1a1612"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="100" cy="184" rx="62" ry="6" fill="rgba(0,0,0,0.22)"/>
+          <rect x="20" y="28" width="160" height="148" rx="10" fill="#8a5a30" stroke="#4a2a14" stroke-width="2"/>
+          <rect x="30" y="38" width="140" height="128" rx="4" fill="url(#r-felt)"/>
+          <g stroke="rgba(0,0,0,0.4)" stroke-width="1">
+            <line x1="65" y1="38" x2="65" y2="166"/>
+            <line x1="100" y1="38" x2="100" y2="166"/>
+            <line x1="135" y1="38" x2="135" y2="166"/>
+            <line x1="30" y1="70" x2="170" y2="70"/>
+            <line x1="30" y1="102" x2="170" y2="102"/>
+            <line x1="30" y1="134" x2="170" y2="134"/>
+          </g>
+          <circle cx="47" cy="54" r="13" fill="url(#r-stone-b)"/>
+          <circle cx="82" cy="54" r="13" fill="url(#r-stone-w)"/>
+          <circle cx="82" cy="86" r="13" fill="url(#r-stone-b)"/>
+          <circle cx="117" cy="86" r="13" fill="url(#r-stone-w)"/>
+          <circle cx="152" cy="86" r="13" fill="url(#r-stone-b)"/>
+          <circle cx="47" cy="118" r="13" fill="url(#r-stone-w)"/>
+          <circle cx="82" cy="118" r="13" fill="url(#r-stone-b)"/>
+          <circle cx="117" cy="118" r="13" fill="url(#r-stone-w)"/>
+          <circle cx="117" cy="150" r="13" fill="url(#r-stone-b)"/>
+          <circle cx="152" cy="150" r="13" fill="url(#r-stone-w)"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">1〜2人であそべるよ</div>
+        <h2 class="card-title">リバーシ</h2>
+        <p class="card-desc">くろとしろ、はさんで ひっくりかえそう。CPUは10段階のつよさ。</p>
+        <div class="card-meta">
+          <span class="chip chip-stone-b"></span>
+          <span class="chip chip-stone-w"></span>
+          <span class="card-cta">あそぶ →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 五目ならべ -->
+    <a class="game-card card-gomoku" role="listitem" href="games/gomoku/index.html">
+      <div class="card-art">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="g-board" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f5cf80"/>
+              <stop offset="100%" stop-color="#d49a4a"/>
+            </linearGradient>
+            <radialGradient id="g-stone-w" cx="0.35" cy="0.3" r="0.9">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#d8d0bc"/>
+            </radialGradient>
+            <radialGradient id="g-stone-b" cx="0.35" cy="0.3" r="0.9">
+              <stop offset="0%" stop-color="#5c5648"/>
+              <stop offset="100%" stop-color="#1a1612"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="100" cy="184" rx="62" ry="6" fill="rgba(0,0,0,0.22)"/>
+          <rect x="20" y="28" width="160" height="148" rx="6" fill="url(#g-board)" stroke="#8a5a26" stroke-width="2"/>
+          <g stroke="#5a3a18" stroke-width="1.2">
+            <line x1="40" y1="46" x2="40" y2="158"/>
+            <line x1="60" y1="46" x2="60" y2="158"/>
+            <line x1="80" y1="46" x2="80" y2="158"/>
+            <line x1="100" y1="46" x2="100" y2="158"/>
+            <line x1="120" y1="46" x2="120" y2="158"/>
+            <line x1="140" y1="46" x2="140" y2="158"/>
+            <line x1="160" y1="46" x2="160" y2="158"/>
+            <line x1="40" y1="46" x2="160" y2="46"/>
+            <line x1="40" y1="68" x2="160" y2="68"/>
+            <line x1="40" y1="90" x2="160" y2="90"/>
+            <line x1="40" y1="112" x2="160" y2="112"/>
+            <line x1="40" y1="134" x2="160" y2="134"/>
+            <line x1="40" y1="158" x2="160" y2="158"/>
+          </g>
+          <circle cx="100" cy="102" r="2.2" fill="#5a3a18"/>
+          <circle cx="40" cy="68" r="9" fill="url(#g-stone-w)" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
+          <circle cx="120" cy="90" r="9" fill="url(#g-stone-w)" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
+          <circle cx="100" cy="134" r="9" fill="url(#g-stone-w)" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
+          <circle cx="60" cy="112" r="9" fill="url(#g-stone-w)" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
+          <circle cx="60" cy="46" r="9" fill="url(#g-stone-b)"/>
+          <circle cx="80" cy="68" r="9" fill="url(#g-stone-b)"/>
+          <circle cx="100" cy="90" r="9" fill="url(#g-stone-b)"/>
+          <circle cx="120" cy="112" r="9" fill="url(#g-stone-b)"/>
+          <circle cx="140" cy="134" r="9" fill="url(#g-stone-b)"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">1〜2人であそべるよ</div>
+        <h2 class="card-title">五目ならべ</h2>
+        <p class="card-desc">タテ・ヨコ・ナナメに 5つそろえたら かち！</p>
+        <div class="card-meta">
+          <span class="chip chip-stone-b"></span>
+          <span class="chip chip-stone-w"></span>
+          <span class="card-cta">あそぶ →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- しんけいすいじゃく -->
+    <a class="game-card card-memory" role="listitem" href="games/memory/index.html">
+      <div class="card-art">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="m-card-back" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7ad6c4"/>
+              <stop offset="100%" stop-color="#3aa896"/>
+            </linearGradient>
+            <linearGradient id="m-card-face" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fffdf6"/>
+              <stop offset="100%" stop-color="#ffeede"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="100" cy="184" rx="58" ry="6" fill="rgba(0,0,0,0.18)"/>
+          <g transform="translate(54 44) rotate(-10 36 50)">
+            <rect x="0" y="0" width="72" height="100" rx="10" fill="url(#m-card-back)" stroke="#1f7a6c" stroke-width="2"/>
+            <rect x="6" y="6" width="60" height="88" rx="7" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <text x="36" y="60" text-anchor="middle" font-size="36" fill="#fffdf6" font-family="serif" font-weight="800">?</text>
+          </g>
+          <g transform="translate(96 52) rotate(8 36 50)">
+            <rect x="0" y="0" width="72" height="100" rx="10" fill="url(#m-card-face)" stroke="#d8b074" stroke-width="2"/>
+            <path d="M36 38 C30 28, 14 30, 18 46 C22 60, 36 70, 36 76 C36 70, 50 60, 54 46 C58 30, 42 28, 36 38 Z"
+                  fill="#ff7aa2" stroke="#c84672" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="22" cy="22" r="3" fill="#ff7aa2"/>
+            <circle cx="50" cy="78" r="3" fill="#ff7aa2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">1〜2人であそべるよ</div>
+        <h2 class="card-title">しんけいすいじゃく</h2>
+        <p class="card-desc">おなじカードを 2まいみつけよう。きおくりょくで しょうぶ！</p>
+        <div class="card-meta">
+          <span class="chip chip-emoji">🧠</span>
+          <span class="chip chip-emoji">💖</span>
+          <span class="chip chip-emoji">⭐</span>
+          <span class="card-cta">あそぶ →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ポーカー -->
+    <a class="game-card card-poker" role="listitem" href="games/poker/index.html">
+      <div class="card-art">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="100" cy="192" rx="72" ry="5" fill="rgba(0,0,0,0.18)"/>
+          <g transform="rotate(-32 100 175) translate(70 89)">
+            <rect x="0" y="0" width="60" height="86" rx="8" ry="8"
+                  fill="#ffffff" stroke="#ffc7d6" stroke-width="2.5"/>
+            <text x="8" y="20" font-family="serif" font-size="14" font-weight="bold" fill="#3a2a36">10</text>
+            <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="36" fill="#3a2a36">♠</text>
+          </g>
+          <g transform="rotate(-16 100 175) translate(70 89)">
+            <rect x="0" y="0" width="60" height="86" rx="8" ry="8"
+                  fill="#ffffff" stroke="#ffc7d6" stroke-width="2.5"/>
+            <text x="8" y="20" font-family="serif" font-size="16" font-weight="bold" fill="#d23a5a">J</text>
+            <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="36" fill="#d23a5a">♦</text>
+          </g>
+          <g transform="translate(70 89)">
+            <rect x="0" y="0" width="60" height="86" rx="8" ry="8"
+                  fill="#ffffff" stroke="#ffc7d6" stroke-width="2.5"/>
+            <text x="8" y="20" font-family="serif" font-size="16" font-weight="bold" fill="#d23a5a">Q</text>
+            <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="36" fill="#d23a5a">♥</text>
+          </g>
+          <g transform="rotate(16 100 175) translate(70 89)">
+            <rect x="0" y="0" width="60" height="86" rx="8" ry="8"
+                  fill="#ffffff" stroke="#ffc7d6" stroke-width="2.5"/>
+            <text x="8" y="20" font-family="serif" font-size="16" font-weight="bold" fill="#3a2a36">K</text>
+            <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="36" fill="#3a2a36">♣</text>
+          </g>
+          <g transform="rotate(32 100 175) translate(70 89)">
+            <rect x="0" y="0" width="60" height="86" rx="8" ry="8"
+                  fill="#ffffff" stroke="#ffc7d6" stroke-width="2.5"/>
+            <text x="8" y="20" font-family="serif" font-size="16" font-weight="bold" fill="#d23a5a">A</text>
+            <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="36" fill="#d23a5a">♥</text>
+          </g>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">1人であそべるよ</div>
+        <h2 class="card-title">ポーカー</h2>
+        <p class="card-desc">いいてふだ そろえて やくをつくろう！</p>
+        <div class="card-meta">
+          <span class="chip chip-emoji">♠</span>
+          <span class="chip chip-emoji">♥</span>
+          <span class="chip chip-emoji">♦</span>
+          <span class="chip chip-emoji">♣</span>
+          <span class="card-cta">あそぶ →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- すごろく -->
+    <a class="game-card card-sugoroku" role="listitem" href="games/sugoroku/index.html">
+      <div class="card-art">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="100" cy="180" rx="58" ry="8" fill="rgba(0,0,0,0.18)"/>
+          <g transform="translate(100 100)">
+            <path d="M -52 -20 L 0 -52 L 52 -20 L 0 12 Z"
+                  fill="#fff7d6" stroke="#e8b958" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M -52 -20 L 0 12 L 0 64 L -52 32 Z"
+                  fill="#ffd590" stroke="#e8b958" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M 52 -20 L 0 12 L 0 64 L 52 32 Z"
+                  fill="#ffb96a" stroke="#e8b958" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="0"   cy="-36" r="4" fill="#c9658c"/>
+            <circle cx="-26" cy="-20" r="4" fill="#c9658c"/>
+            <circle cx="26"  cy="-20" r="4" fill="#c9658c"/>
+            <circle cx="0"   cy="-20" r="4" fill="#c9658c"/>
+            <circle cx="0"   cy="-4"  r="4" fill="#c9658c"/>
+            <circle cx="-39" cy="1"  r="3.5" fill="#fff"/>
+            <circle cx="-26" cy="22" r="3.5" fill="#fff"/>
+            <circle cx="-13" cy="43" r="3.5" fill="#fff"/>
+            <circle cx="39"  cy="1"  r="3.5" fill="#fff"/>
+            <circle cx="13"  cy="43" r="3.5" fill="#fff"/>
+          </g>
+          <path d="M 30 40 L 34 50 L 44 54 L 34 58 L 30 68 L 26 58 L 16 54 L 26 50 Z" fill="#ff8fb0" opacity="0.85"/>
+          <path d="M 165 60 L 168 67 L 175 70 L 168 73 L 165 80 L 162 73 L 155 70 L 162 67 Z" fill="#a8dcb5" opacity="0.85"/>
+          <path d="M 160 140 L 162 145 L 167 147 L 162 149 L 160 154 L 158 149 L 153 147 L 158 145 Z" fill="#ffc66a" opacity="0.85"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">2〜4人であそべるよ</div>
+        <h2 class="card-title">すごろく</h2>
+        <p class="card-desc">サイコロをふって ゴールをめざそう。なかまといっしょに！</p>
+        <div class="card-meta">
+          <span class="chip chip-emoji">🦜</span>
+          <span class="chip chip-emoji">🐿️</span>
+          <span class="chip chip-emoji">🦙</span>
+          <span class="chip chip-emoji">🐱</span>
+          <span class="card-cta">あそぶ →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ピンボール -->
+    <a class="game-card card-pinball" role="listitem" href="games/pinball/index.html">
+      <div class="card-art">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="p-machine" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3a4f8a"/>
+              <stop offset="100%" stop-color="#1f2e5c"/>
+            </linearGradient>
+            <radialGradient id="p-ball" cx="0.35" cy="0.3" r="0.9">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="55%" stop-color="#d8d2c4"/>
+              <stop offset="100%" stop-color="#7e7568"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="100" cy="186" rx="52" ry="6" fill="rgba(0,0,0,0.22)"/>
+          <path d="M42 30 Q42 22 50 22 L150 22 Q158 22 158 30 L158 170 Q158 180 148 180 L52 180 Q42 180 42 170 Z"
+                fill="url(#p-machine)" stroke="#162144" stroke-width="2"/>
+          <path d="M52 30 Q52 26 56 26 L144 26 Q148 26 148 30 L148 70 Q100 88 52 70 Z"
+                fill="rgba(255,255,255,0.12)"/>
+          <circle cx="74" cy="78" r="10" fill="#ffd166" stroke="#caa238" stroke-width="2"/>
+          <circle cx="126" cy="78" r="10" fill="#ff6b8a" stroke="#c44363" stroke-width="2"/>
+          <circle cx="100" cy="108" r="10" fill="#7ad6c4" stroke="#3aa896" stroke-width="2"/>
+          <path d="M62 150 L92 162 L62 158 Z" fill="#ffd166" stroke="#caa238" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M138 150 L108 162 L138 158 Z" fill="#ffd166" stroke="#caa238" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="118" cy="138" r="9" fill="url(#p-ball)" stroke="#5a5448" stroke-width="1.2"/>
+          <circle cx="115" cy="135" r="2.4" fill="rgba(255,255,255,0.85)"/>
+          <circle cx="56" cy="50" r="2.5" fill="#ffd166" opacity="0.9"/>
+          <circle cx="100" cy="44" r="2.5" fill="#ff6b8a" opacity="0.9"/>
+          <circle cx="144" cy="50" r="2.5" fill="#7ad6c4" opacity="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">1人であそべるよ</div>
+        <h2 class="card-title">ピンボール</h2>
+        <p class="card-desc">フリッパーで たまをはじいて ハイスコアをめざせ！</p>
+        <div class="card-meta">
+          <span class="chip chip-emoji">⚪</span>
+          <span class="chip chip-emoji">⚡</span>
+          <span class="chip chip-emoji">💥</span>
+          <span class="card-cta">あそぶ →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ぶんしょうスロット -->
+    <a class="game-card card-slot" role="listitem" href="games/slot/index.html">
+      <div class="card-art">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="s-body" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffb1cf"/>
+              <stop offset="100%" stop-color="#e07ca0"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="100" cy="186" rx="72" ry="7" fill="rgba(0,0,0,0.2)"/>
+          <rect x="22" y="28" width="156" height="148" rx="18" ry="18"
+                fill="url(#s-body)" stroke="#c25e84" stroke-width="2"/>
+          <circle cx="60"  cy="46" r="6" fill="#fff7c2" stroke="#e6c34a" stroke-width="1.5"/>
+          <circle cx="100" cy="46" r="6" fill="#ffd7e6" stroke="#d76a92" stroke-width="1.5"/>
+          <circle cx="140" cy="46" r="6" fill="#c8efd2" stroke="#6abf8a" stroke-width="1.5"/>
+          <rect x="36" y="64" width="128" height="68" rx="10" ry="10"
+                fill="#fff" stroke="#c25e84" stroke-width="2"/>
+          <line x1="78"  y1="68" x2="78"  y2="128" stroke="#c25e84" stroke-width="1.5"/>
+          <line x1="122" y1="68" x2="122" y2="128" stroke="#c25e84" stroke-width="1.5"/>
+          <text x="57"  y="106" text-anchor="middle" font-size="28" font-family="sans-serif" font-weight="800" fill="#c25e84">あ</text>
+          <text x="100" y="106" text-anchor="middle" font-size="28" font-family="sans-serif" font-weight="800" fill="#3aa896">い</text>
+          <text x="143" y="106" text-anchor="middle" font-size="28" font-family="sans-serif" font-weight="800" fill="#e89a3a">う</text>
+          <rect x="48" y="146" width="104" height="20" rx="6" fill="#fff" stroke="#c25e84" stroke-width="2"/>
+          <circle cx="160" cy="100" r="10" fill="#ffd166" stroke="#caa238" stroke-width="2"/>
+          <rect x="156" y="100" width="8" height="34" rx="2" fill="#caa238"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">1〜3人であそべるよ</div>
+        <h2 class="card-title">ぶんしょうスロット</h2>
+        <p class="card-desc">ことばをそろえて おかしな ぶんしょうを つくろう！</p>
+        <div class="card-meta">
+          <span class="chip chip-emoji">🎰</span>
+          <span class="chip chip-emoji">📝</span>
+          <span class="chip chip-emoji">✨</span>
+          <span class="card-cta">あそぶ →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- わだいルーレット -->
+    <a class="game-card card-roulette" role="listitem" href="games/roulette/index.html">
+      <div class="card-art">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="rl-body" cx="0.3" cy="0.25" r="0.9">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.45"/>
+              <stop offset="100%" stop-color="#d76a92" stop-opacity="0.25"/>
+            </radialGradient>
+            <radialGradient id="rl-btn" cx="0.35" cy="0.3" r="0.85">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#ffb359" stop-opacity="0.4"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="100" cy="186" rx="76" ry="8" fill="rgba(0,0,0,0.18)"/>
+          <rect x="22" y="28" width="156" height="148" rx="18" ry="18"
+                fill="#ff9ec3" stroke="#d76a92" stroke-width="2"/>
+          <rect x="22" y="28" width="156" height="148" rx="18" ry="18"
+                fill="url(#rl-body)"/>
+          <circle cx="60" cy="46" r="6" fill="#fff7c2" stroke="#e6c34a" stroke-width="1.5"/>
+          <circle cx="100" cy="46" r="6" fill="#ffd7e6" stroke="#d76a92" stroke-width="1.5"/>
+          <circle cx="140" cy="46" r="6" fill="#c8efd2" stroke="#6abf8a" stroke-width="1.5"/>
+          <rect x="36" y="64" width="128" height="68" rx="10" ry="10"
+                fill="#fff" stroke="#d76a92" stroke-width="2"/>
+          <text x="100" y="108" text-anchor="middle" font-size="22" fill="#ff7a9c" font-family="serif" font-weight="bold">わだい</text>
+          <rect x="172" y="66" width="6" height="46" rx="3" fill="#a06070"/>
+          <circle cx="175" cy="62" r="9" fill="#ff7a9c" stroke="#a04060" stroke-width="1.5"/>
+          <circle cx="100" cy="156" r="12" fill="#ffd590" stroke="#e09040" stroke-width="2"/>
+          <circle cx="100" cy="154" r="8" fill="url(#rl-btn)"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">2人〜であそべるよ</div>
+        <h2 class="card-title">わだいルーレット</h2>
+        <p class="card-desc">ドラムをまわして、みんなでおはなしする わだいを 決めよう！</p>
+        <div class="card-meta">
+          <span class="chip chip-emoji">🎡</span>
+          <span class="chip chip-emoji">💬</span>
+          <span class="chip chip-emoji">♥</span>
+          <span class="card-cta">あそぶ →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- オカメラン -->
+    <a class="game-card card-okameran" role="listitem" href="games/okameran/index.html">
+      <div class="card-art">
+        <img src="img/okame_card.png" alt="" aria-hidden="true">
+      </div>
+      <div class="card-body">
+        <div class="card-tag">1人であそべるよ</div>
+        <h2 class="card-title">オカメラン</h2>
+        <p class="card-desc">おでかけしたオカメインコはおうちにかえれるかな？</p>
+        <div class="card-meta">
+          <span class="chip chip-emoji">🐦</span>
+          <span class="chip chip-emoji">🎍</span>
+          <span class="chip chip-emoji">🔥</span>
+          <span class="card-cta">あそぶ →</span>
+        </div>
+      </div>
+    </a>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>♥ なかよく あそんでね ♥</p>
+    <p class="copyright">© 2026 ペコ先輩</p>
+  </footer>
+
+</div>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch((e) => console.warn("SW reg failed", e));
+    });
+  }
+</script>
+</body>
+</html>

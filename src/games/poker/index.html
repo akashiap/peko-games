@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>ポーカー｜ペコせんぱいのミニゲーセン</title>
+<meta name="description" content="スマホで遊べる無料ポーカー（5カードドロー）。役の判定もしっかり、シンプルUIで気軽に楽しめます。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ポーカー｜ペコせんぱいのミニゲーセン">
+<meta property="og:description" content="スマホで遊べる無料ポーカー。役そろえてハイスコアを狙おう！">
+<meta property="og:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<meta property="og:url" content="https://akashiriot.github.io/peko-games/games/poker/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ペコせんぱいのミニゲーセン">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ポーカー｜ペコせんぱいのミニゲーセン">
+<meta name="twitter:description" content="スマホで遊べる無料ポーカー。役そろえてハイスコアを狙おう！">
+<meta name="twitter:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P72GZWJ98N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P72GZWJ98N');
+</script>
+</head>
+<body>
+<div id="app">
+
+  <!-- タイトル画面 -->
+  <section id="screen-title" class="screen active">
+    <div class="title-art">
+      <svg class="poker-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="100" cy="184" rx="74" ry="8" fill="rgba(0,0,0,0.18)"/>
+        <!-- 背面カード -->
+        <g transform="translate(58 28) rotate(-12 50 70)">
+          <rect x="0" y="0" width="100" height="140" rx="12" ry="12"
+                fill="#ffffff" stroke="#ffc7d6" stroke-width="3"/>
+          <text x="50" y="86" text-anchor="middle"
+                font-family="serif" font-size="80" fill="#3a2a36">♣</text>
+        </g>
+        <!-- 中央カード -->
+        <g transform="translate(70 36)">
+          <rect x="0" y="0" width="100" height="140" rx="12" ry="12"
+                fill="#ffffff" stroke="#ffc7d6" stroke-width="3"/>
+          <text x="14" y="32" text-anchor="start"
+                font-family="serif" font-size="22" font-weight="bold" fill="#d23a5a">A</text>
+          <text x="14" y="50" text-anchor="start"
+                font-family="serif" font-size="20" fill="#d23a5a">♥</text>
+          <text x="50" y="98" text-anchor="middle"
+                font-family="serif" font-size="74" fill="#d23a5a">♥</text>
+          <text x="86" y="128" text-anchor="end"
+                font-family="serif" font-size="22" font-weight="bold" fill="#d23a5a"
+                transform="rotate(180 86 122)">A</text>
+        </g>
+        <!-- 手前カード -->
+        <g transform="translate(82 44) rotate(12 50 70)">
+          <rect x="0" y="0" width="100" height="140" rx="12" ry="12"
+                fill="#ffffff" stroke="#ffc7d6" stroke-width="3"/>
+          <text x="14" y="32" font-family="serif" font-size="22" font-weight="bold" fill="#3a2a36">K</text>
+          <text x="14" y="50" font-family="serif" font-size="20" fill="#3a2a36">♠</text>
+          <text x="50" y="98" text-anchor="middle"
+                font-family="serif" font-size="74" fill="#3a2a36">♠</text>
+        </g>
+      </svg>
+    </div>
+    <h1 class="title">
+      <span class="title-heart left">♥</span>
+      <span class="title-text">ポーカー</span>
+      <span class="title-heart right">♥</span>
+    </h1>
+    <div class="menu">
+      <h2 class="menu-heading">難易度  Lv<span id="level-display">3</span></h2>
+      <input type="range" id="level-slider" class="level-slider"
+             min="1" max="5" step="1" value="3">
+      <p class="hint" id="level-hint">ふつう</p>
+
+      <button id="btn-start" class="btn btn-primary">対戦開始</button>
+
+      <label class="sound-toggle">
+        <input type="checkbox" id="sound-toggle" checked>
+        <span class="sound-toggle-label">効果音</span>
+      </label>
+    </div>
+
+    <a href="../../" class="btn home-link">トップへもどる</a>
+
+    <p class="copyright">© 2026 ペコ先輩</p>
+  </section>
+
+  <!-- 対戦画面 -->
+  <section id="screen-game" class="screen">
+    <div class="table-wrap">
+      <div class="hand-area">
+        <div class="hand-label" id="cpu-hand-label">CPU(Lv3)の手札</div>
+        <div class="cpu-rank" id="cpu-rank-display"></div>
+        <div id="cpu-hand" class="hand cpu-hand"></div>
+      </div>
+
+      <div id="message" class="message"></div>
+
+      <div class="hand-area">
+        <div class="hand-label" id="me-hand-label">あなたの手札</div>
+        <div class="me-rank" id="me-rank-display"></div>
+        <div id="me-hand" class="hand"></div>
+      </div>
+    </div>
+
+    <div id="actions" class="actions"></div>
+
+    <footer class="game-footer">
+      <button id="btn-back" class="btn btn-small">タイトルへ</button>
+    </footer>
+  </section>
+
+  <!-- 終局画面 -->
+  <section id="screen-result" class="screen">
+    <div class="result-deco">✿</div>
+    <h2 class="result-title" id="result-title">終局</h2>
+    <div class="result-hands">
+      <div class="result-side">
+        <span class="result-side-label">CPU</span>
+        <div id="result-cpu-hand" class="hand result-hand"></div>
+        <span class="result-rank" id="result-cpu-rank"></span>
+      </div>
+      <div class="result-side">
+        <span class="result-side-label">あなた</span>
+        <div id="result-me-hand" class="hand result-hand"></div>
+        <span class="result-rank" id="result-me-rank"></span>
+      </div>
+    </div>
+    <div class="result-buttons">
+      <button id="btn-replay" class="btn btn-primary">もう一度</button>
+      <button id="btn-result-back" class="btn">タイトルへ</button>
+    </div>
+  </section>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

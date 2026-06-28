@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>ぶんしょうスロット｜ペコせんぱいのミニゲーセン</title>
+<meta name="description" content="スマホで遊べる無料の文章スロット。回すたびに変な文章ができあがる！家族や友だちと笑える言葉あそび。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ぶんしょうスロット｜ペコせんぱいのミニゲーセン">
+<meta property="og:description" content="回すたびに変な文章ができあがる！家族や友だちで楽しめる言葉あそびスロット。">
+<meta property="og:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<meta property="og:url" content="https://akashiriot.github.io/peko-games/games/slot/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ペコせんぱいのミニゲーセン">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ぶんしょうスロット｜ペコせんぱいのミニゲーセン">
+<meta name="twitter:description" content="回すたびに変な文章ができあがる！家族や友だちで楽しめる言葉あそびスロット。">
+<meta name="twitter:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P72GZWJ98N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P72GZWJ98N');
+</script>
+</head>
+<body>
+<div id="app">
+
+  <!-- タイトル画面 -->
+  <section id="screen-title" class="screen active">
+    <div class="title-art">
+      <svg class="slot-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="100" cy="186" rx="76" ry="8" fill="rgba(0,0,0,0.18)"/>
+        <!-- 本体（ピンクのスロット筐体） -->
+        <rect x="22" y="28" width="156" height="148" rx="18" ry="18"
+              fill="#ff9ec3" stroke="#d76a92" stroke-width="2"/>
+        <rect x="22" y="28" width="156" height="148" rx="18" ry="18"
+              fill="url(#bodyShade)"/>
+        <!-- 上部ランプ -->
+        <circle cx="60" cy="46" r="6" fill="#fff7c2" stroke="#e6c34a" stroke-width="1.5"/>
+        <circle cx="100" cy="46" r="6" fill="#ffd7e6" stroke="#d76a92" stroke-width="1.5"/>
+        <circle cx="140" cy="46" r="6" fill="#c8efd2" stroke="#6abf8a" stroke-width="1.5"/>
+        <!-- 窓 -->
+        <rect x="36" y="64" width="128" height="68" rx="10" ry="10"
+              fill="#fff" stroke="#d76a92" stroke-width="2"/>
+        <!-- 区切り -->
+        <line x1="78" y1="68" x2="78" y2="128" stroke="#ffd1de" stroke-width="2"/>
+        <line x1="122" y1="68" x2="122" y2="128" stroke="#ffd1de" stroke-width="2"/>
+        <!-- リールの文字風シンボル -->
+        <text x="57" y="106" text-anchor="middle" font-size="34" fill="#ff7a9c" font-family="serif">★</text>
+        <text x="100" y="106" text-anchor="middle" font-size="34" fill="#ffaa55" font-family="serif">♥</text>
+        <text x="143" y="106" text-anchor="middle" font-size="34" fill="#6abf8a" font-family="serif">♪</text>
+        <!-- レバー -->
+        <rect x="172" y="66" width="6" height="46" rx="3" fill="#a06070"/>
+        <circle cx="175" cy="62" r="9" fill="#ff7a9c" stroke="#a04060" stroke-width="1.5"/>
+        <!-- ボタン -->
+        <circle cx="100" cy="156" r="12" fill="#ffd590" stroke="#e09040" stroke-width="2"/>
+        <circle cx="100" cy="154" r="8" fill="url(#btnShade)"/>
+        <defs>
+          <radialGradient id="bodyShade" cx="0.3" cy="0.25" r="0.9">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#d76a92" stop-opacity="0.25"/>
+          </radialGradient>
+          <radialGradient id="btnShade" cx="0.35" cy="0.3" r="0.85">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#ffb359" stop-opacity="0.4"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+    <h1 class="title">
+      <span class="title-heart left">♥</span>
+      <span class="title-text">ぶんしょうスロット</span>
+      <span class="title-heart right">♥</span>
+    </h1>
+    <div class="menu">
+      <h2 class="menu-heading">あそぶ人数</h2>
+      <div class="mode-buttons">
+        <button class="btn mode-btn" data-players="1">1人</button>
+        <button class="btn mode-btn selected" data-players="2">2人</button>
+        <button class="btn mode-btn" data-players="3">3人</button>
+      </div>
+
+      <p class="hint" id="rule-hint">
+        3つのリールを順番にまわして、<br>
+        へんてこな文章を完成させよう！
+      </p>
+
+      <button id="btn-start" class="btn btn-primary">スタート</button>
+
+      <label class="sound-toggle">
+        <input type="checkbox" id="sound-toggle" checked>
+        <span class="sound-toggle-label">効果音</span>
+      </label>
+    </div>
+
+    <a href="../../" class="btn home-link">トップへもどる</a>
+
+    <p class="copyright">© 2026 ペコ先輩</p>
+  </section>
+
+  <!-- ゲーム画面 -->
+  <section id="screen-game" class="screen">
+    <header class="game-header">
+      <div class="turn-indicator" id="turn-indicator">プレイヤー1のばん</div>
+    </header>
+
+    <div class="reels-wrap">
+      <div class="reel-row">
+        <div class="reel-label">だれが</div>
+        <div class="reel" id="reel-0" data-slot="0">
+          <div class="reel-strip">
+            <div class="reel-item">？？？</div>
+          </div>
+          <div class="reel-frame"></div>
+        </div>
+      </div>
+      <div class="reel-row">
+        <div class="reel-label">どこで</div>
+        <div class="reel" id="reel-1" data-slot="1">
+          <div class="reel-strip">
+            <div class="reel-item">？？？</div>
+          </div>
+          <div class="reel-frame"></div>
+        </div>
+      </div>
+      <div class="reel-row">
+        <div class="reel-label">どうする</div>
+        <div class="reel" id="reel-2" data-slot="2">
+          <div class="reel-strip">
+            <div class="reel-item">？？？</div>
+          </div>
+          <div class="reel-frame"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="message" class="message">レバーをひいてスタート！</div>
+
+    <div class="action-area">
+      <button id="btn-spin" class="btn btn-primary">レバーをひく</button>
+    </div>
+
+    <footer class="game-footer">
+      <button id="btn-back" class="btn">タイトルへ</button>
+    </footer>
+  </section>
+
+  <!-- 結果画面 -->
+  <section id="screen-result" class="screen">
+    <div class="result-deco">✿</div>
+    <h2 class="result-title">できあがり！</h2>
+    <div class="result-sentence" id="result-sentence">
+      <span class="result-part" id="result-part-0">―</span>
+      <span class="result-part" id="result-part-1">―</span>
+      <span class="result-part" id="result-part-2">―</span>
+    </div>
+    <p class="result-comment" id="result-comment">なんだかへんてこ！</p>
+    <div class="result-buttons">
+      <button id="btn-replay" class="btn btn-primary">もう一度</button>
+      <button id="btn-result-back" class="btn">タイトルへ</button>
+    </div>
+  </section>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+:root {
+  --bg-banner: #fde561;
+  --bg-1: #fde561;
+  --bg-2: #ffe8d6;
+  --bg-3: #f7e0f0;
+  --ink: #4a3a2c;
+  --ink-soft: #7a6555;
+  --accent: #ff8a40;
+  --accent-soft: #ffb98a;
+  --pink: #ff7aa2;
+  --purple: #8a72c0;
+  --gold: #e8a93a;
+  --teal: #3aa896;
+  --navy: #3a4f8a;
+  --card-shadow: 0 6px 18px rgba(120, 80, 40, 0.12),
+                 0 2px 4px rgba(120, 80, 40, 0.08);
+  --card-shadow-hover: 0 10px 26px rgba(120, 80, 40, 0.18),
+                       0 4px 8px rgba(120, 80, 40, 0.10);
+  --radius-card: 22px;
+  --radius-pill: 999px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+  color-scheme: light;
+}
+
+body {
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic UI",
+               "Yu Gothic", "Meiryo", system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background-color: var(--bg-banner);
+  background-image:
+    linear-gradient(180deg,
+      var(--bg-banner) 0%,
+      var(--bg-banner) 38%,
+      var(--bg-2) 62%,
+      var(--bg-3) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+#app {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 18px 40px;
+}
+
+.page-bg-top {
+  display: block;
+  width: calc(100% + 36px);
+  margin: 0 -18px 0;
+  height: auto;
+}
+
+/* ヒーロー */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 18px 8px 22px;
+}
+
+.hero-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 18px;
+  color: var(--accent-soft);
+  animation: twinkle 2.6s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(255, 200, 140, 0.6);
+}
+.sparkle.s1 { top: 4px;  left: 12%;  color: #ffb86b; animation-delay: 0s;   }
+.sparkle.s2 { top: 30px; right: 16%; color: #ff8fb6; animation-delay: 0.6s; }
+.sparkle.s3 { top: 70px; left: 6%;   color: #b89dde; animation-delay: 1.2s; }
+.sparkle.s4 { top: 86px; right: 8%;  color: #ffb86b; animation-delay: 1.8s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.55; transform: scale(1) rotate(0deg); }
+  50%      { opacity: 1;    transform: scale(1.25) rotate(12deg); }
+}
+
+.hero-title {
+  margin: 0 0 6px;
+  font-size: clamp(28px, 7.4vw, 36px);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  display: flex;
+  justify-content: center;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.05;
+  background: linear-gradient(90deg, #ff8a40 0%, #ff7aa2 50%, #8a72c0 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.hero-text-small {
+  font-size: 0.55em;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.hero-text-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-heart {
+  color: var(--pink);
+  font-size: 0.8em;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.5));
+  animation: heart-beat 1.6s ease-in-out infinite;
+}
+.hero-heart:last-child { animation-delay: 0.8s; }
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  30%      { transform: scale(1.15); }
+  60%      { transform: scale(0.95); }
+}
+
+.hero-sub {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+/* ゲーム一覧 */
+.game-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.game-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 14px;
+  align-items: stretch;
+  padding: 14px;
+  background: #fffdf8;
+  border-radius: var(--radius-card);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg,
+              rgba(255, 255, 255, 0.45) 0%,
+              rgba(255, 255, 255, 0) 40%);
+}
+
+.game-card:active {
+  transform: translateY(1px) scale(0.995);
+  box-shadow: var(--card-shadow);
+}
+
+@media (hover: hover) {
+  .game-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+  }
+}
+
+/* カードごとのアクセントカラー */
+.card-reversi  { background: linear-gradient(135deg, #fff8e1 0%, #fffdf8 60%); }
+.card-gomoku   { background: linear-gradient(135deg, #efe7fa 0%, #fffdf8 60%); }
+.card-memory   { background: linear-gradient(135deg, #d9f1ea 0%, #fffdf8 60%); }
+.card-sugoroku { background: linear-gradient(135deg, #ffe7d4 0%, #fffdf8 60%); }
+.card-pinball  { background: linear-gradient(135deg, #dde4f6 0%, #fffdf8 60%); }
+.card-slot     { background: linear-gradient(135deg, #ffe0eb 0%, #fffdf8 60%); }
+.card-poker    { background: linear-gradient(135deg, #fde2e7 0%, #fffdf8 60%); }
+.card-roulette { background: linear-gradient(135deg, #ffe1ec 0%, #fffdf8 60%); }
+.card-okameran { background: linear-gradient(135deg, #d6eeff 0%, #fffdf8 60%); }
+
+/* オカメランカード: 枠の中身を完全な白に、画像下の drop-shadow を消す */
+.card-okameran .card-art { background: #ffffff; }
+.card-okameran .card-art img { filter: none; }
+
+/* アート */
+.card-art {
+  width: 96px;
+  height: 96px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9),
+              inset 0 -2px 6px rgba(180, 130, 70, 0.08);
+}
+.card-art svg,
+.card-art img {
+  width: 86%;
+  height: 86%;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 2px rgba(120, 80, 40, 0.12));
+  transition: transform 0.4s ease;
+}
+.game-card:active .card-art svg,
+.game-card:active .card-art img { transform: scale(1.04) rotate(-2deg); }
+@media (hover: hover) {
+  .game-card:hover .card-art svg,
+  .game-card:hover .card-art img { transform: scale(1.04) rotate(-2deg); }
+}
+
+/* 本文 */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.card-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--accent);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 6px;
+  box-shadow: 0 2px 0 rgba(180, 90, 30, 0.18);
+}
+.card-gomoku   .card-tag { background: var(--purple); box-shadow: 0 2px 0 rgba(80, 60, 130, 0.22); }
+.card-memory   .card-tag { background: var(--teal);   box-shadow: 0 2px 0 rgba(40, 110, 100, 0.22); }
+.card-sugoroku .card-tag { background: var(--gold);   box-shadow: 0 2px 0 rgba(160, 110, 40, 0.22); }
+.card-pinball  .card-tag { background: var(--navy);   box-shadow: 0 2px 0 rgba(30, 50, 100, 0.28); }
+.card-slot     .card-tag { background: #c25e84; box-shadow: 0 2px 0 rgba(160, 60, 100, 0.25); }
+.card-poker    .card-tag { background: #d23a5a; box-shadow: 0 2px 0 rgba(170, 40, 70, 0.25); }
+.card-roulette .card-tag { background: #ff7a9c; box-shadow: 0 2px 0 rgba(200, 80, 120, 0.25); }
+.card-okameran .card-tag { background: #ff9a3a; box-shadow: 0 2px 0 rgba(200, 120, 40, 0.25); }
+
+.card-title {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.card-desc {
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.chip-stone-b {
+  background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #1a1a1a 70%);
+  box-shadow: inset 0 -2px 3px rgba(0,0,0,0.4),
+              0 1px 2px rgba(0,0,0,0.18);
+}
+.chip-stone-w {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #d8d2c8 70%);
+  box-shadow: inset 0 -2px 3px rgba(140,120,90,0.25),
+              0 1px 2px rgba(0,0,0,0.12);
+}
+.chip-emoji {
+  width: auto;
+  height: auto;
+  font-size: 16px;
+  line-height: 1;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.8));
+}
+
+.card-cta {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+.card-gomoku   .card-cta { color: var(--purple); }
+.card-memory   .card-cta { color: var(--teal); }
+.card-sugoroku .card-cta { color: var(--gold); }
+.card-pinball  .card-cta { color: var(--navy); }
+.card-slot     .card-cta { color: #c25e84; }
+.card-poker    .card-cta { color: #d23a5a; }
+.card-roulette .card-cta { color: #ff7a9c; }
+.card-okameran .card-cta { color: #ff9a3a; }
+
+/* フッター */
+.page-footer {
+  text-align: center;
+  margin-top: 28px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.page-footer p { margin: 0; opacity: 0.8; }
+.page-footer .copyright { margin-top: 6px; font-size: 11px; opacity: 0.65; }
+
+/* やや広めの画面（タブレット相当） */
+@media (min-width: 520px) {
+  #app { padding: 0 22px 48px; }
+  .page-bg-top { width: calc(100% + 44px); margin: 0 -22px 0; }
+  .game-card { grid-template-columns: 112px 1fr; gap: 16px; padding: 16px; }
+  .card-art { width: 112px; height: 112px; }
+  .card-title { font-size: 22px; }
+  .card-desc  { font-size: 13.5px; }
+}
+
+/* モーション抑制 */
+@media (prefers-reduced-motion: reduce) {
+  .sparkle, .hero-heart { animation: none; }
+  .game-card, .card-art svg, .card-art img { transition: none; }
+}

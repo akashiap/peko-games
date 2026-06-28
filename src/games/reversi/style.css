@@ -1,0 +1,558 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, #ffe4ef 0%, #fff5e1 60%, #e8f6e6 100%);
+  color: #6b4a5a;
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro",
+               "Yu Gothic Medium", "Yu Gothic", Meiryo,
+               -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.screen.active {
+  display: flex;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ===== タイトル画面 ===== */
+#screen-title {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,182,193,0.45) 0 8px, transparent 9px),
+    radial-gradient(circle at 88% 12%, rgba(255,210,170,0.55) 0 6px, transparent 7px),
+    radial-gradient(circle at 18% 78%, rgba(180,230,200,0.55) 0 7px, transparent 8px),
+    radial-gradient(circle at 80% 84%, rgba(255,200,220,0.55) 0 6px, transparent 7px),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0 1px, transparent 2px),
+    linear-gradient(180deg, #ffe7f1 0%, #fff5e1 60%, #eaf7ec 100%);
+  background-size: auto, auto, auto, auto, 24px 24px, auto;
+}
+
+.title-art {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 6px 10px rgba(180, 120, 130, 0.25));
+}
+
+.othello-icon {
+  width: 100%;
+  height: 100%;
+  animation: bobbing 2.4s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+
+@keyframes bobbing {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-6px) rotate(2deg); }
+}
+
+.title {
+  font-size: 2.4rem;
+  letter-spacing: 0.18em;
+  margin: 0 0 24px 0;
+  color: #ff7a9c;
+  text-shadow:
+    2px 2px 0 #fff,
+    3px 3px 0 rgba(255, 154, 180, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-text {
+  display: inline-block;
+  animation: wiggle 3s ease-in-out infinite;
+}
+
+.title-heart {
+  font-size: 1.4rem;
+  color: #ff8fb8;
+  display: inline-block;
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+.title-heart.right {
+  animation-delay: 0.7s;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  30%      { transform: scale(1.25); }
+  60%      { transform: scale(0.95); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-1deg); }
+  50%      { transform: rotate(1deg); }
+}
+
+.menu {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 20px 18px;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(255, 170, 190, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.menu-heading {
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin: 0 0 6px 0;
+  color: #c9658c;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.mode-buttons,
+.order-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.mode-btn { flex: 1; }
+.order-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.order-btn.selected,
+.mode-btn.selected {
+  background: linear-gradient(180deg, #ffb3c8, #ff8fb0);
+  border-color: #ff8fb0;
+  color: #fff;
+  box-shadow: 0 4px 0 #e07398, 0 6px 10px rgba(255, 140, 170, 0.35);
+  transform: translateY(-1px);
+}
+
+/* ===== 難易度スライダー ===== */
+.level-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffd2dc 0%, #ff8fb0 100%);
+  outline: none;
+  margin: 4px 0;
+  box-shadow: inset 0 2px 4px rgba(180, 130, 150, 0.3);
+}
+
+.level-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, #ffb3c8 70%, #ff7a9c);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 6px rgba(200, 80, 110, 0.4);
+  cursor: pointer;
+}
+
+.level-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, #ffb3c8 70%, #ff7a9c);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 6px rgba(200, 80, 110, 0.4);
+  cursor: pointer;
+}
+
+#level-display {
+  display: inline-block;
+  min-width: 1.6em;
+  text-align: center;
+  color: #ff7a9c;
+  font-size: 1.1em;
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: #b08aa0;
+  text-align: center;
+  margin: 4px 0 0 0;
+}
+
+.sound-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #a07a8a;
+  cursor: pointer;
+}
+
+.sound-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #ff8fb0;
+  cursor: pointer;
+}
+
+.home-link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  text-align: center;
+  min-width: 200px;
+}
+
+.copyright {
+  margin-top: 14px;
+  margin-bottom: 0;
+  font-size: 11px;
+  opacity: 0.65;
+  color: #6b4a5a;
+  text-align: center;
+}
+
+/* ===== ボタン共通 ===== */
+.btn {
+  appearance: none;
+  background: #fff;
+  border: 2px solid #ffc7d6;
+  color: #c9658c;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #ffc7d6, 0 6px 10px rgba(255, 180, 200, 0.3);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s;
+}
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #ffc7d6, 0 2px 4px rgba(255, 180, 200, 0.3);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #ffd590, #ffb359);
+  border-color: #ffb359;
+  color: #fff;
+  box-shadow: 0 4px 0 #e09040, 0 6px 12px rgba(255, 170, 90, 0.4);
+}
+
+.btn-primary:active {
+  box-shadow: 0 1px 0 #e09040, 0 2px 4px rgba(255, 170, 90, 0.3);
+}
+
+/* ===== 対戦画面 ===== */
+#screen-game {
+  justify-content: space-between;
+  padding: 8px;
+  background: linear-gradient(180deg, #fff5e1 0%, #eaf7ec 100%);
+}
+
+.game-header {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  gap: 8px;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff;
+  min-width: 90px;
+  justify-content: center;
+  border: 2px solid #ffe1ec;
+  box-shadow: 0 2px 4px rgba(200, 160, 180, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.player-info.active {
+  background: linear-gradient(180deg, #fff0d0, #ffe0a0);
+  border-color: #ffc66a;
+  box-shadow: 0 0 0 3px rgba(255, 198, 106, 0.45),
+              0 4px 10px rgba(255, 170, 80, 0.35);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.player-info.active::before {
+  content: "♥";
+  color: #ff8fb0;
+  font-size: 0.9rem;
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+.player-label {
+  font-size: 0.95rem;
+  color: #8b6b78;
+  font-weight: bold;
+}
+
+.player-count {
+  font-size: 1.15rem;
+  font-weight: bold;
+  min-width: 1.5em;
+  text-align: right;
+  color: #c9658c;
+}
+
+.turn-indicator {
+  font-size: 0.95rem;
+  color: #8b6b78;
+  text-align: center;
+  flex: 1;
+  font-weight: bold;
+}
+
+/* ===== 盤面 ===== */
+.board-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 4px;
+}
+
+.board {
+  --board-size: min(96vw, calc(100vh - 220px));
+  width: var(--board-size);
+  height: var(--board-size);
+  max-width: 480px;
+  max-height: 480px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  background: linear-gradient(135deg, #a8dcb5 0%, #8fcfa3 100%);
+  border: 6px solid #fff;
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 3px #ffc7d6,
+    0 8px 22px rgba(180, 130, 150, 0.35);
+  gap: 0;
+  overflow: hidden;
+}
+
+.cell {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cell.legal::after {
+  content: "";
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: rgba(255, 143, 184, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-sizing: border-box;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(0.85); opacity: 0.7; }
+  50%      { transform: scale(1.1);  opacity: 1; }
+}
+
+.cell.legal:active::after {
+  background: rgba(255, 143, 184, 0.75);
+}
+
+/* 石 */
+.stone {
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: inset -2px -3px 4px rgba(0,0,0,0.25),
+              inset 2px 2px 3px rgba(255,255,255,0.5),
+              0 2px 3px rgba(0,0,0,0.25);
+}
+
+.cell .stone {
+  width: 82%;
+  height: 82%;
+  animation: place 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.stone-black {
+  background: radial-gradient(circle at 35% 28%, #6b6b6b, #2a2a2a 60%, #0d0d0d);
+}
+
+.stone-white {
+  background: radial-gradient(circle at 35% 28%, #ffffff, #f0f0f0 55%, #d0d0d0);
+}
+
+.stone.small {
+  width: 18px;
+  height: 18px;
+}
+
+.result-side .stone {
+  width: 40px;
+  height: 40px;
+}
+
+@keyframes place {
+  0%   { transform: scale(0.2); opacity: 0.3; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* 思考中表示 */
+.thinking {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.92);
+  color: #c9658c;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  pointer-events: none;
+  border: 2px solid #ffc7d6;
+  box-shadow: 0 4px 10px rgba(180, 130, 150, 0.35);
+}
+
+.thinking::after {
+  content: " ♪";
+}
+
+.message {
+  width: 100%;
+  max-width: 480px;
+  min-height: 1.4em;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #d97a4a;
+  padding: 4px;
+  font-weight: bold;
+}
+
+.game-footer {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  gap: 10px;
+  padding: 8px;
+}
+
+.game-footer .btn {
+  flex: 1;
+}
+
+/* ===== 終局画面 ===== */
+#screen-result {
+  background: linear-gradient(180deg, #ffe7f1 0%, #fff5e1 60%, #eaf7ec 100%);
+}
+
+.result-deco {
+  font-size: 2.4rem;
+  color: #ff9ec3;
+  margin-bottom: 8px;
+  animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.result-title {
+  font-size: 1.9rem;
+  margin: 0 0 24px 0;
+  color: #ff7a9c;
+  text-shadow: 2px 2px 0 #fff;
+}
+
+.result-counts {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+  background: rgba(255,255,255,0.6);
+  padding: 16px 24px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(200, 160, 180, 0.3);
+}
+
+.result-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-num {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #c9658c;
+}
+
+.result-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 280px;
+}
+
+/* ===== 横向き対応 ===== */
+@media (orientation: landscape) {
+  .board {
+    --board-size: min(calc(100vh - 140px), 90vw);
+  }
+}

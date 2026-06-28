@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>五目ならべ｜ペコせんぱいのミニゲーセン</title>
+<meta name="description" content="スマホでさくっと遊べる無料五目ならべ（連珠）。CPU対戦・2人対戦に対応、ひらがなUIでこどもにもやさしい。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="五目ならべ｜ペコせんぱいのミニゲーセン">
+<meta property="og:description" content="スマホでさくっと遊べる無料五目ならべ。CPU対戦も2人対戦もOK！">
+<meta property="og:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<meta property="og:url" content="https://akashiriot.github.io/peko-games/games/gomoku/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ペコせんぱいのミニゲーセン">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="五目ならべ｜ペコせんぱいのミニゲーセン">
+<meta name="twitter:description" content="スマホでさくっと遊べる無料五目ならべ。CPU対戦も2人対戦もOK！">
+<meta name="twitter:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P72GZWJ98N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P72GZWJ98N');
+</script>
+</head>
+<body>
+<div id="app">
+
+  <!-- タイトル画面 -->
+  <section id="screen-title" class="screen active">
+    <div class="title-art">
+      <svg class="glider" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="boardGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f4d9a4"/>
+            <stop offset="100%" stop-color="#d8b06a"/>
+          </linearGradient>
+          <radialGradient id="blackStone" cx="0.35" cy="0.3" r="0.75">
+            <stop offset="0%" stop-color="#7a7a82"/>
+            <stop offset="55%" stop-color="#1f1f24"/>
+            <stop offset="100%" stop-color="#000000"/>
+          </radialGradient>
+          <radialGradient id="whiteStone" cx="0.35" cy="0.3" r="0.75">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="70%" stop-color="#ececec"/>
+            <stop offset="100%" stop-color="#b8b8c0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- 影 -->
+        <ellipse cx="100" cy="188" rx="74" ry="6" fill="rgba(120,80,140,0.22)"/>
+
+        <!-- 碁盤（板） -->
+        <rect x="18" y="30" width="164" height="152" rx="8"
+              fill="url(#boardGrad)" stroke="#a87b3a" stroke-width="2"/>
+
+        <!-- 木目 -->
+        <path d="M28 60 Q100 55 172 62" stroke="#c69354" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M28 104 Q100 98 172 106" stroke="#c69354" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M28 148 Q100 142 172 150" stroke="#c69354" stroke-width="0.8" fill="none" opacity="0.5"/>
+
+        <!-- 格子 -->
+        <g stroke="#5a3a14" stroke-width="1.3" stroke-linecap="round">
+          <!-- 縦線 -->
+          <line x1="40" y1="48" x2="40" y2="164"/>
+          <line x1="60" y1="48" x2="60" y2="164"/>
+          <line x1="80" y1="48" x2="80" y2="164"/>
+          <line x1="100" y1="48" x2="100" y2="164"/>
+          <line x1="120" y1="48" x2="120" y2="164"/>
+          <line x1="140" y1="48" x2="140" y2="164"/>
+          <line x1="160" y1="48" x2="160" y2="164"/>
+          <!-- 横線 -->
+          <line x1="40" y1="48" x2="160" y2="48"/>
+          <line x1="40" y1="68" x2="160" y2="68"/>
+          <line x1="40" y1="88" x2="160" y2="88"/>
+          <line x1="40" y1="108" x2="160" y2="108"/>
+          <line x1="40" y1="128" x2="160" y2="128"/>
+          <line x1="40" y1="148" x2="160" y2="148"/>
+          <line x1="40" y1="164" x2="160" y2="164"/>
+        </g>
+
+        <!-- 天元など星 -->
+        <circle cx="100" cy="108" r="2.2" fill="#3a2410"/>
+        <circle cx="60" cy="68" r="1.6" fill="#3a2410"/>
+        <circle cx="140" cy="68" r="1.6" fill="#3a2410"/>
+        <circle cx="60" cy="148" r="1.6" fill="#3a2410"/>
+        <circle cx="140" cy="148" r="1.6" fill="#3a2410"/>
+
+        <!-- 周囲の白石 -->
+        <g>
+          <circle cx="60" cy="88" r="8.6" fill="url(#whiteStone)" stroke="#9a9aa4" stroke-width="0.6"/>
+          <circle cx="80" cy="68" r="8.6" fill="url(#whiteStone)" stroke="#9a9aa4" stroke-width="0.6"/>
+          <circle cx="140" cy="128" r="8.6" fill="url(#whiteStone)" stroke="#9a9aa4" stroke-width="0.6"/>
+          <circle cx="120" cy="148" r="8.6" fill="url(#whiteStone)" stroke="#9a9aa4" stroke-width="0.6"/>
+        </g>
+
+        <!-- 黒石 5個ならび（五目！） -->
+        <g>
+          <circle cx="60" cy="128" r="9" fill="url(#blackStone)"/>
+          <circle cx="80" cy="128" r="9" fill="url(#blackStone)"/>
+          <circle cx="100" cy="128" r="9" fill="url(#blackStone)"/>
+          <circle cx="120" cy="128" r="9" fill="url(#blackStone)"/>
+          <circle cx="140" cy="128" r="9" fill="url(#blackStone)"/>
+        </g>
+
+        <!-- まわりのキラ -->
+        <g opacity="0.95">
+          <path d="M16 60 l1.8 5.4 5.4 1.8 -5.4 1.8 -1.8 5.4 -1.8 -5.4 -5.4 -1.8 5.4 -1.8 z" fill="#ffd4e2"/>
+          <path d="M180 28 l1.6 4.6 4.6 1.6 -4.6 1.6 -1.6 4.6 -1.6 -4.6 -4.6 -1.6 4.6 -1.6 z" fill="#ffe6b8"/>
+          <path d="M186 168 l1.4 4 4 1.4 -4 1.4 -1.4 4 -1.4 -4 -4 -1.4 4 -1.4 z" fill="#cfe9d8"/>
+        </g>
+      </svg>
+    </div>
+    <h1 class="title">
+      <span class="title-heart left">♥</span>
+      <span class="title-text">五目ならべ</span>
+      <span class="title-heart right">♥</span>
+    </h1>
+    <div class="menu">
+      <h2 class="menu-heading">モード選択</h2>
+      <div class="mode-buttons">
+        <button class="btn mode-btn" data-mode="pvp">2人で対戦</button>
+        <button class="btn mode-btn" data-mode="cpu">CPUと対戦</button>
+      </div>
+
+      <h2 class="menu-heading">盤の広さ</h2>
+      <div class="size-buttons">
+        <button class="btn size-btn" data-size="9">小<span class="size-sub">9×9</span></button>
+        <button class="btn size-btn" data-size="13">中<span class="size-sub">13×13</span></button>
+        <button class="btn size-btn selected" data-size="15">大<span class="size-sub">15×15</span></button>
+      </div>
+
+      <div id="difficulty-area" class="difficulty hidden">
+        <h2 class="menu-heading">手番</h2>
+        <div class="order-buttons">
+          <button class="btn order-btn selected" data-order="first">
+            <span class="stone stone-black small"></span>先攻
+          </button>
+          <button class="btn order-btn" data-order="second">
+            <span class="stone stone-white small"></span>後攻
+          </button>
+        </div>
+
+        <h2 class="menu-heading">難易度  Lv<span id="level-display">3</span></h2>
+        <input type="range" id="level-slider" class="level-slider"
+               min="1" max="10" step="1" value="3">
+        <p class="hint" id="level-hint">弱い</p>
+      </div>
+
+      <button id="btn-start" class="btn btn-primary">対戦開始</button>
+
+      <label class="sound-toggle">
+        <input type="checkbox" id="sound-toggle" checked>
+        <span class="sound-toggle-label">効果音</span>
+      </label>
+    </div>
+
+    <a href="../../" class="btn home-link">トップへもどる</a>
+  </section>
+
+  <!-- 対戦画面 -->
+  <section id="screen-game" class="screen">
+    <header class="game-header">
+      <div class="player-info" id="info-black">
+        <span class="stone stone-black small"></span>
+        <span class="player-label">くろ</span>
+      </div>
+      <div class="turn-indicator" id="turn-indicator">くろの番</div>
+      <div class="player-info" id="info-white">
+        <span class="stone stone-white small"></span>
+        <span class="player-label">しろ</span>
+      </div>
+    </header>
+
+    <div class="board-wrap">
+      <div id="board" class="board"></div>
+      <div id="thinking" class="thinking hidden">思考中...</div>
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <footer class="game-footer">
+      <button id="btn-undo" class="btn">待った</button>
+      <button id="btn-reset" class="btn">リセット</button>
+      <button id="btn-back" class="btn">タイトルへ</button>
+    </footer>
+  </section>
+
+  <!-- 終局画面 -->
+  <section id="screen-result" class="screen">
+    <div class="result-deco">✿</div>
+    <h2 class="result-title" id="result-title">終局</h2>
+    <div class="result-counts">
+      <div class="result-side" id="result-side-black">
+        <span class="stone stone-black"></span>
+        <span class="result-label" id="result-black-label">　</span>
+      </div>
+      <div class="result-side" id="result-side-white">
+        <span class="stone stone-white"></span>
+        <span class="result-label" id="result-white-label">　</span>
+      </div>
+    </div>
+    <div class="result-buttons">
+      <button id="btn-replay" class="btn btn-primary">もう一度</button>
+      <button id="btn-result-back" class="btn">タイトルへ</button>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <p class="copyright">© 2026 ペコ先輩</p>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>すごろく｜ペコせんぱいのミニゲーセン</title>
+<meta name="description" content="スマホで遊べる無料すごろく。家族や友だちとサイコロをふって、ゴールを目指そう！ひらがな対応。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="すごろく｜ペコせんぱいのミニゲーセン">
+<meta property="og:description" content="スマホで遊べる無料すごろく。みんなでワイワイ盛り上がろう！">
+<meta property="og:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<meta property="og:url" content="https://akashiriot.github.io/peko-games/games/sugoroku/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ペコせんぱいのミニゲーセン">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="すごろく｜ペコせんぱいのミニゲーセン">
+<meta name="twitter:description" content="スマホで遊べる無料すごろく。みんなでワイワイ盛り上がろう！">
+<meta name="twitter:image" content="https://akashiriot.github.io/peko-games/icon/icon-512.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P72GZWJ98N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P72GZWJ98N');
+</script>
+</head>
+<body>
+<div id="app">
+
+  <!-- タイトル画面 -->
+  <section id="screen-title" class="screen active">
+    <div class="title-art">
+      <svg class="dice-art" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- 影 -->
+        <ellipse cx="100" cy="180" rx="58" ry="8" fill="rgba(0,0,0,0.18)"/>
+        <!-- サイコロ本体 -->
+        <g transform="translate(100 100)">
+          <!-- 上面 -->
+          <path d="M -52 -20 L 0 -52 L 52 -20 L 0 12 Z"
+                fill="#fff7d6" stroke="#e8b958" stroke-width="2" stroke-linejoin="round"/>
+          <!-- 左面 -->
+          <path d="M -52 -20 L 0 12 L 0 64 L -52 32 Z"
+                fill="#ffd590" stroke="#e8b958" stroke-width="2" stroke-linejoin="round"/>
+          <!-- 右面 -->
+          <path d="M 52 -20 L 0 12 L 0 64 L 52 32 Z"
+                fill="#ffb96a" stroke="#e8b958" stroke-width="2" stroke-linejoin="round"/>
+          <!-- 上面の目（5）：菱形面の四隅と中心 -->
+          <circle cx="0"   cy="-36" r="4" fill="#c9658c"/>
+          <circle cx="-26" cy="-20" r="4" fill="#c9658c"/>
+          <circle cx="26"  cy="-20" r="4" fill="#c9658c"/>
+          <circle cx="0"   cy="-20" r="4" fill="#c9658c"/>
+          <circle cx="0"   cy="-4"  r="4" fill="#c9658c"/>
+          <!-- 左面の目（3）：面の対角線上に等間隔 -->
+          <circle cx="-39" cy="1"  r="3.5" fill="#fff"/>
+          <circle cx="-26" cy="22" r="3.5" fill="#fff"/>
+          <circle cx="-13" cy="43" r="3.5" fill="#fff"/>
+          <!-- 右面の目（2）：面の対角線上 -->
+          <circle cx="39"  cy="1"  r="3.5" fill="#fff"/>
+          <circle cx="13"  cy="43" r="3.5" fill="#fff"/>
+        </g>
+        <!-- キラキラ -->
+        <g class="sparkle">
+          <path d="M 30 40 L 34 50 L 44 54 L 34 58 L 30 68 L 26 58 L 16 54 L 26 50 Z" fill="#ff8fb0" opacity="0.8"/>
+          <path d="M 165 60 L 168 67 L 175 70 L 168 73 L 165 80 L 162 73 L 155 70 L 162 67 Z" fill="#a8dcb5" opacity="0.8"/>
+          <path d="M 160 140 L 162 145 L 167 147 L 162 149 L 160 154 L 158 149 L 153 147 L 158 145 Z" fill="#ffc66a" opacity="0.8"/>
+        </g>
+      </svg>
+    </div>
+    <h1 class="title">
+      <span class="title-heart left">♥</span>
+      <span class="title-text">すごろく</span>
+      <span class="title-heart right">♥</span>
+    </h1>
+    <div class="menu">
+      <h2 class="menu-heading">プレイヤー人数</h2>
+      <div class="count-buttons">
+        <button class="btn count-btn" data-count="2">2人</button>
+        <button class="btn count-btn selected" data-count="3">3人</button>
+        <button class="btn count-btn" data-count="4">4人</button>
+      </div>
+      <p class="hint hint-cast">🦜 インコ ／ 🐿️ リス ／ 🦙 アルパカ ／ 🐱 ネコ</p>
+
+      <h2 class="menu-heading">ゴールまで</h2>
+      <div class="length-buttons">
+        <button class="btn length-btn" data-length="20">みじかい</button>
+        <button class="btn length-btn selected" data-length="30">ふつう</button>
+        <button class="btn length-btn" data-length="40">ながい</button>
+      </div>
+
+      <button id="btn-start" class="btn btn-primary">はじめる</button>
+
+      <label class="sound-toggle">
+        <input type="checkbox" id="sound-toggle" checked>
+        <span class="sound-toggle-label">効果音</span>
+      </label>
+    </div>
+
+    <a href="../../" class="btn home-link">トップへもどる</a>
+
+    <p class="copyright">© 2026 ペコ先輩</p>
+  </section>
+
+  <!-- 対戦画面 -->
+  <section id="screen-game" class="screen">
+    <header class="game-header">
+      <div class="players-bar" id="players-bar"></div>
+      <div class="turn-indicator" id="turn-indicator">プレイヤー1のばん</div>
+    </header>
+
+    <div class="board-wrap">
+      <div id="board" class="board"></div>
+    </div>
+
+    <div id="message" class="message">サイコロをふってね！</div>
+
+    <div class="dice-area">
+      <div class="dice" id="dice">
+        <div class="dice-face" id="dice-face">?</div>
+      </div>
+      <button id="btn-roll" class="btn btn-primary">サイコロをふる</button>
+    </div>
+
+    <footer class="game-footer">
+      <button id="btn-back" class="btn">タイトルへ</button>
+    </footer>
+  </section>
+
+  <!-- 結果画面 -->
+  <section id="screen-result" class="screen">
+    <div class="result-deco">✿</div>
+    <h2 class="result-title" id="result-title">ゴール！</h2>
+    <div class="result-winner" id="result-winner">
+      <div class="winner-token" id="winner-token"></div>
+      <div class="winner-name" id="winner-name">プレイヤー1</div>
+      <div class="winner-sub">のかち！</div>
+    </div>
+    <div class="ranking" id="ranking"></div>
+    <div class="result-buttons">
+      <button id="btn-replay" class="btn btn-primary">もう一度</button>
+      <button id="btn-result-back" class="btn">タイトルへ</button>
+    </div>
+  </section>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

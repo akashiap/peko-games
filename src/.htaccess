@@ -1,0 +1,23 @@
+# --- MIME types for PWA ---
+AddType application/manifest+json .webmanifest
+AddType application/javascript .js
+AddType image/png .png
+AddType image/svg+xml .svg
+
+<IfModule mod_headers.c>
+  # --- Service Worker: allow root scope and prevent caching ---
+  <Files "sw.js">
+    Header set Service-Worker-Allowed "/"
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </Files>
+
+  # --- Manifest: short cache to allow updates ---
+  <Files "manifest.webmanifest">
+    Header set Cache-Control "max-age=300, must-revalidate"
+  </Files>
+</IfModule>
+
+# --- Default UTF-8 for HTML ---
+AddDefaultCharset UTF-8

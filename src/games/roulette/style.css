@@ -1,0 +1,507 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, #ffe4ef 0%, #fff5e1 60%, #e8f6e6 100%);
+  color: #6b4a5a;
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro",
+               "Yu Gothic Medium", "Yu Gothic", Meiryo,
+               -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ===== タイトル画面 ===== */
+#screen-title {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,182,193,0.45) 0 8px, transparent 9px),
+    radial-gradient(circle at 88% 12%, rgba(255,210,170,0.55) 0 6px, transparent 7px),
+    radial-gradient(circle at 18% 78%, rgba(180,230,200,0.55) 0 7px, transparent 8px),
+    radial-gradient(circle at 80% 84%, rgba(255,200,220,0.55) 0 6px, transparent 7px),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0 1px, transparent 2px),
+    linear-gradient(180deg, #ffe7f1 0%, #fff5e1 60%, #eaf7ec 100%);
+  background-size: auto, auto, auto, auto, 24px 24px, auto;
+}
+
+.title-art {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 6px 10px rgba(180, 120, 130, 0.25));
+}
+
+.slot-icon {
+  width: 100%;
+  height: 100%;
+  animation: bobbing 2.4s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+
+@keyframes bobbing {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-6px) rotate(2deg); }
+}
+
+.title {
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
+  margin: 0 0 20px 0;
+  color: #ff7a9c;
+  text-shadow:
+    2px 2px 0 #fff,
+    3px 3px 0 rgba(255, 154, 180, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-text {
+  display: inline-block;
+  animation: wiggle 3s ease-in-out infinite;
+}
+
+.title-heart {
+  font-size: 1.3rem;
+  color: #ff8fb8;
+  display: inline-block;
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+.title-heart.right { animation-delay: 0.7s; }
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  30%      { transform: scale(1.25); }
+  60%      { transform: scale(0.95); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-1deg); }
+  50%      { transform: rotate(1deg); }
+}
+
+.menu {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 20px 18px;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(255, 170, 190, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.menu-heading {
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin: 0 0 6px 0;
+  color: #c9658c;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 10px 6px;
+  font-size: 0.95rem;
+}
+
+.mode-btn.selected {
+  background: linear-gradient(180deg, #ffb3c8, #ff8fb0);
+  border-color: #ff8fb0;
+  color: #fff;
+  box-shadow: 0 4px 0 #e07398, 0 6px 10px rgba(255, 140, 170, 0.35);
+  transform: translateY(-1px);
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #8b6b78;
+  text-align: center;
+  margin: 4px 0 0 0;
+  line-height: 1.6;
+}
+
+.sound-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #a07a8a;
+  cursor: pointer;
+}
+
+.sound-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #ff8fb0;
+  cursor: pointer;
+}
+
+.home-link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  text-align: center;
+  min-width: 200px;
+}
+
+.copyright {
+  margin-top: 16px;
+  margin-bottom: 0;
+  font-size: 11px;
+  opacity: 0.65;
+  color: #6b4a5a;
+  text-align: center;
+}
+
+/* ===== ボタン共通 ===== */
+.btn {
+  appearance: none;
+  background: #fff;
+  border: 2px solid #ffc7d6;
+  color: #c9658c;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #ffc7d6, 0 6px 10px rgba(255, 180, 200, 0.3);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s;
+}
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #ffc7d6, 0 2px 4px rgba(255, 180, 200, 0.3);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 0 #ffc7d6;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #ffd590, #ffb359);
+  border-color: #ffb359;
+  color: #fff;
+  box-shadow: 0 4px 0 #e09040, 0 6px 12px rgba(255, 170, 90, 0.4);
+}
+
+.btn-primary:active {
+  box-shadow: 0 1px 0 #e09040, 0 2px 4px rgba(255, 170, 90, 0.3);
+}
+
+.btn-primary:disabled {
+  box-shadow: 0 2px 0 #e09040;
+}
+
+/* ===== ゲーム画面 ===== */
+#screen-game {
+  justify-content: space-between;
+  padding: 8px;
+  background: linear-gradient(180deg, #fff5e1 0%, #eaf7ec 100%);
+}
+
+.game-header {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+}
+
+.turn-indicator {
+  font-size: 1.15rem;
+  color: #c9658c;
+  text-align: center;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 2px solid #ffe1ec;
+  box-shadow: 0 2px 4px rgba(200, 160, 180, 0.2);
+}
+
+.turn-indicator.spinning {
+  background: linear-gradient(180deg, #fff0d0, #ffe0a0);
+  border-color: #ffc66a;
+  color: #c9658c;
+}
+
+/* ===== リール ===== */
+.reels-wrap {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px;
+  margin-top: auto;
+}
+
+.reel-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reel-label {
+  flex: 0 0 70px;
+  font-size: 0.9rem;
+  color: #a07a8a;
+  font-weight: bold;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 6px 4px;
+  border-radius: 12px;
+  border: 2px solid #ffe1ec;
+}
+
+.reel {
+  flex: 1;
+  position: relative;
+  height: 88px;
+  background: linear-gradient(180deg, #ffe7f1 0%, #fff 50%, #ffe7f1 100%);
+  border: 3px solid #ff9ec3;
+  border-radius: 14px;
+  box-shadow:
+    inset 0 4px 8px rgba(255, 154, 180, 0.25),
+    inset 0 -4px 8px rgba(255, 154, 180, 0.25),
+    0 4px 0 #d76a92,
+    0 6px 12px rgba(255, 140, 170, 0.3);
+  overflow: hidden;
+}
+
+.reel.spinning {
+  animation: shake 0.06s linear infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(0.7px); }
+}
+
+.reel.locked {
+  border-color: #ffb359;
+  box-shadow:
+    inset 0 0 0 2px #ffd590,
+    0 4px 0 #e09040,
+    0 6px 12px rgba(255, 170, 90, 0.45);
+}
+
+.reel-strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.reel-item {
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #6b4a5a;
+  letter-spacing: 0.04em;
+  text-shadow: 1px 1px 0 #fff;
+  white-space: nowrap;
+  padding: 0 12px;
+  text-align: center;
+}
+
+.reel.locked .reel-item {
+  color: #d97a4a;
+}
+
+.reel-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255,158,195,0.35) 0%, rgba(255,158,195,0) 30%, rgba(255,158,195,0) 70%, rgba(255,158,195,0.35) 100%);
+}
+
+.message {
+  width: 100%;
+  max-width: 480px;
+  min-height: 1.4em;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #d97a4a;
+  padding: 4px;
+  font-weight: bold;
+}
+
+.action-area {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: center;
+  padding: 4px 8px 8px;
+  margin-top: 20px;
+  margin-bottom: auto;
+}
+
+.action-area .btn {
+  min-width: 200px;
+  font-size: 1.05rem;
+}
+
+.game-footer {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  gap: 10px;
+  padding: 8px;
+  margin-top: auto;
+}
+
+.game-footer .btn {
+  flex: 1;
+}
+
+/* ===== 結果画面 ===== */
+#screen-result {
+  background: linear-gradient(180deg, #ffe7f1 0%, #fff5e1 60%, #eaf7ec 100%);
+}
+
+.result-deco {
+  font-size: 2.4rem;
+  color: #ff9ec3;
+  margin-bottom: 8px;
+  animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.result-title {
+  font-size: 1.6rem;
+  margin: 0 0 16px 0;
+  color: #ff7a9c;
+  text-shadow: 2px 2px 0 #fff;
+}
+
+.result-card {
+  background: rgba(255,255,255,0.75);
+  padding: 22px 26px;
+  border-radius: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 16px rgba(200, 160, 180, 0.3);
+  max-width: 90vw;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  animation: popin 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.result-label {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #c9658c;
+  background: #fff0f5;
+  padding: 4px 14px;
+  border-radius: 999px;
+  border: 1.5px solid #ffd1de;
+}
+
+.result-topic {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #d97a4a;
+  text-shadow: 1px 1px 0 #fff;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+@keyframes popin {
+  0%   { transform: scale(0.3); opacity: 0; }
+  60%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.result-comment {
+  font-size: 1rem;
+  color: #8b6b78;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.result-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 280px;
+}
+
+/* ===== 横向き対応 ===== */
+@media (orientation: landscape) and (max-height: 500px) {
+  .title-art { width: 90px; height: 90px; }
+  .title { font-size: 1.4rem; margin-bottom: 10px; }
+  .menu { padding: 12px; gap: 10px; }
+  .reel { height: 64px; }
+  .reel-item { height: 64px; font-size: 1rem; }
+}
